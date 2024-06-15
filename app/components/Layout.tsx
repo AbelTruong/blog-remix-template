@@ -1,16 +1,22 @@
+import Footer from './Footer'
+import Header from './Header'
+import TopBar from './TopBar'
+
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* welcome */}
+      <TopBar />
+
       <section>
-        <h2>Welcome to my website</h2>
+        <Header />
       </section>
 
-      <p>Header</p>
+      <section>{children}</section>
 
-      <div>{children}</div>
-
-      <footer>Footer</footer>
+      <section>
+        <Footer />
+      </section>
     </>
   )
 }
