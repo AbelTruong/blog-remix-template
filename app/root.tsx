@@ -13,6 +13,8 @@ import './tailwind.css'
 import './styles/global-styles.scss'
 import ErrorPage from './components/ErrorPage'
 import NotFoundPage from './components/NotFoundPage'
+import { Objectable } from './types'
+import Layout from './components/Layout'
 
 export function shouldRevalidate() {
   return false
@@ -22,7 +24,11 @@ export async function loader() {
   return json({ name: 'abel' })
 }
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export default function App() {
+  const outletContext: Objectable = {
+    name: 'Abel',
+  }
+
   return (
     <html lang="en">
       <head>
@@ -32,7 +38,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <Layout {...outletContext}>
+          <Outlet context={outletContext} />
+        </Layout>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -41,16 +49,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
   )
 }
 
-export default function App() {
-  return <Outlet />
-}
-
 export function ErrorBoundary() {
   const error: unknown = useRouteError()
 
   console.log('error', error)
 
   const [root] = useMatches()
+
+  console.log('root ErrorBoundary', root)
 
   let page = undefined
   switch (error.status) {

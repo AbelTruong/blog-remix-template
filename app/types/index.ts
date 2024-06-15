@@ -10,5 +10,8 @@ export type Iconable = {
 }
 
 export type ErrorBoundaryProps = {
-  message?: string | unknown
+  data: string | ''
+  internal: boolean
+  status: number
+  statusText: string | ''
 }
