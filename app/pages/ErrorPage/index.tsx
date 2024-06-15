@@ -1,6 +1,6 @@
 import { Objectable } from '~/types'
-import Button from '../Button'
 import logger from '~/helper/logger'
+import Button from '~/components/Button'
 
 // NOTE: https://freefrontend.com/500-error-page-html-templates/
 

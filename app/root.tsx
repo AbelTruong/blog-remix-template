@@ -9,12 +9,12 @@ import {
   useMatches,
   useRouteError,
 } from '@remix-run/react'
-import './tailwind.css'
-import './styles/global-styles.scss'
-import ErrorPage from './components/ErrorPage'
+import './styles/tailwind.css'
+import './styles/global.css'
 import NotFoundPage from './components/NotFoundPage'
 import { Objectable } from './types'
 import Layout from './components/Layout'
+import ErrorPage from './pages/ErrorPage'
 
 export function shouldRevalidate() {
   return false
