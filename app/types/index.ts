@@ -15,3 +15,9 @@ export type ErrorBoundaryProps = {
   status: number
   statusText: string | ''
 }
+
+export type NotifyType = {
+  message: string | ''
+  status?: string | 'default'
+  onClose?: unknown
+}

@@ -12,9 +12,11 @@ import {
 import './styles/tailwind.css'
 import './styles/global.css'
 import NotFoundPage from './components/NotFoundPage'
-import { Objectable } from './types'
+import { NotifyType, Objectable } from './types'
 import Layout from './components/Layout'
 import ErrorPage from './pages/ErrorPage'
+import Notify from './components/common/Notify'
+import { useCallback, useState } from 'react'
 
 export function shouldRevalidate() {
   return false
@@ -25,9 +27,27 @@ export async function loader() {
 }
 
 export default function App() {
+  const [notify, setNotify] = useState<NotifyType>({
+    message: '',
+    status: 'default',
+    onClose: () => {},
+  })
+
   const outletContext: Objectable = {
     name: 'Abel',
+    notify,
+    setNotify,
   }
+
+  const onCloseNotify = useCallback(
+    () =>
+      setNotify({
+        message: '',
+        status: 'default',
+        onClose: () => {},
+      }),
+    []
+  )
 
   return (
     <html lang="en">
@@ -41,6 +61,9 @@ export default function App() {
         <Layout {...outletContext}>
           <Outlet context={outletContext} />
         </Layout>
+
+        <Notify {...notify} onClose={onCloseNotify} />
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
