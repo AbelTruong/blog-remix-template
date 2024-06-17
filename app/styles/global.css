@@ -325,3 +325,7 @@ body .slider-controls .slider-next-button {
 body {
   overflow-x: hidden;
 }
+
+.container {
+  max-width: 100% !important;
+}

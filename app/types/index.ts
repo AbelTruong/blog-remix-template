@@ -21,3 +21,14 @@ export type NotifyType = {
   status?: string | 'default'
   onClose?: unknown
 }
+
+export type ModalType = {
+  heading?: string | ''
+  children?: React.ReactNode
+  primaryButton?: React.ReactNode
+  secondaryButton?: React.ReactNode
+  setShowModal: any
+  className?: string | ''
+  showLine?: boolean | false
+  heightChildren?: string | ''
+}
