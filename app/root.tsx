@@ -15,7 +15,8 @@ import { NotifyType, Objectable } from './types'
 import Layout from './components/Layout'
 import ErrorPage from './pages/ErrorPage'
 import Notify from './components/common/Notify'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import getScrollBarWidth from './helper/getScrollBarWidth'
 
 export function shouldRevalidate() {
   return false
@@ -31,6 +32,13 @@ export default function App() {
     status: 'default',
     onClose: () => {},
   })
+
+  useEffect(() => {
+    /**
+     * Get scrollbar width for disabled scrolling screen
+     */
+    getScrollBarWidth()
+  }, [])
 
   const outletContext: Objectable = {
     name: 'Abel',

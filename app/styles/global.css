@@ -329,3 +329,19 @@ body {
 .container {
   max-width: 100% !important;
 }
+
+/* POPUP drawer DRAWER PAGE */
+.drawer-active {
+  overflow: hidden;
+  padding-right: var(--scroll-bar-width) !important;
+}
+.drawer-active .drawer-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+.drawer-active .drawer-content {
+  right: 0;
+}
+.drawer-active .drawer-close-button {
+  display: block;
+}

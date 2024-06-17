@@ -1,10 +1,15 @@
 import { useOutletContext } from '@remix-run/react'
 import { useState } from 'react'
+import Button from '~/components/common/Button'
+import Drawer from '~/components/common/Drawer'
 import Modal from '~/components/common/Modal'
 import { NotifyType } from '~/types'
 
 function HomePage() {
   const [showModal, setShowModal] = useState<boolean>(false)
+  const [showDrawer, setShowDrawer] = useState<boolean>(false)
+
+  console.log('🚀🚀🚀 ~ HomePage ~ showDrawer:', showDrawer)
   const { setNotify: notify } = useOutletContext<any>()
 
   const handleShowNotify = ({ message, status }: NotifyType) => {
@@ -18,10 +23,18 @@ function HomePage() {
         <button onClick={() => handleShowNotify({ message: 'Successfully', status: 'success' })}>
           Show notify
         </button>
-        <button onClick={() => handleShowNotify({ message: 'Nothing here', status: 'warning' })}>
+        <button
+          onClick={() => {
+            document.body.classList.add('drawer-active')
+          }}
+        >
           Show Drawer
         </button>
+        <button onClick={() => handleShowNotify({ message: 'Nothing here', status: 'warning' })}>
+          Show something
+        </button>
       </div>
+      <Button>Click now</Button>
 
       {showModal && (
         <Modal
@@ -46,6 +59,8 @@ function HomePage() {
           </div>
         </Modal>
       )}
+
+      <Drawer heading="Something">Content ben trong na ba con </Drawer>
     </div>
   )
 }

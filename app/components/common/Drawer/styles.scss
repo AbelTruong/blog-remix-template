@@ -1,0 +1,15 @@
+/* POPUP drawer DRAWER PAGE */
+.drawer-active {
+  overflow: hidden;
+  padding-right: var(--scroll-bar-width) !important;
+  .drawer-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+  .drawer-content {
+    right: 0;
+  }
+  .drawer-close-button {
+    display: block;
+  }
+}

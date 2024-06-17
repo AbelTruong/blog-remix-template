@@ -32,3 +32,23 @@ export type ModalType = {
   showLine?: boolean | false
   heightChildren?: string | ''
 }
+
+export type ButtonType = {
+  icon?: any
+  type?: 'submit' | 'reset' | 'button'
+  onClick?: any
+  fullWidth?: boolean
+  children: React.ReactNode
+  disabled?: boolean
+  loading?: boolean
+  styles?: Objectable
+  buttonClassName?: string
+  className?: string
+  onKeyDown?: any
+  id?: string
+}
+
+export type DrawerType = {
+  heading: string | ''
+  children: React.ReactNode
+}
