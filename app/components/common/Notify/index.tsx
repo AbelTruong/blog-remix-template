@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
-import { NotifyType } from '~/types'
+import { NotifyProps } from '~/types'
 
-const Notify = ({ message, status, onClose }: NotifyType) => {
+const Notify = ({ message, status, onClose }: NotifyProps) => {
   useEffect(() => {
     if (message) {
       // delay 500ms for next toast

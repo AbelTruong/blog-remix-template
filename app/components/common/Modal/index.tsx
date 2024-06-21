@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useScreen } from '~/hooks'
-import { ModalType } from '~/types'
+import { ModalProps } from '~/types'
 
-function Modal(props: ModalType) {
+function Modal(props: ModalProps) {
   const {
     heading,
     children,

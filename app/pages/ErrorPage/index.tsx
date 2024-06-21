@@ -314,7 +314,7 @@ function ErrorPage(props: Objectable) {
       <h2 className="error-subtitle">Have you tried turning it off and on again?</h2>
 
       <div className="w-full flex justify-center mt-4">
-        <Button />
+        <Button>Homepage</Button>
       </div>
     </div>
   )

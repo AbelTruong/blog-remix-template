@@ -11,12 +11,14 @@ import {
 import './styles/tailwind.css'
 import './styles/global.css'
 import NotFoundPage from './components/NotFoundPage'
-import { NotifyType, Objectable } from './types'
+import { NotifyProps, Objectable } from './types'
 import Layout from './components/Layout'
 import ErrorPage from './pages/ErrorPage'
 import Notify from './components/common/Notify'
 import { useCallback, useEffect, useState } from 'react'
 import getScrollBarWidth from './helper/getScrollBarWidth'
+import ScrollToTop from './components/ScrollToTop'
+import MoreActions from './components/MoreActions'
 
 export function shouldRevalidate() {
   return false
@@ -27,7 +29,7 @@ export async function loader() {
 }
 
 export default function App() {
-  const [notify, setNotify] = useState<NotifyType>({
+  const [notify, setNotify] = useState<NotifyProps>({
     message: '',
     status: 'default',
     onClose: () => {},
@@ -38,6 +40,21 @@ export default function App() {
      * Get scrollbar width for disabled scrolling screen
      */
     getScrollBarWidth()
+
+    /**
+     * Scroll Top Func
+     */
+    const scrollFunc = () => {
+      const scrollTopBtn: HTMLElement | null = document.querySelector('.scroll-to-top')
+
+      if (!scrollTopBtn) return
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollTopBtn.style.display = 'flex'
+      } else {
+        scrollTopBtn.style.display = 'none'
+      }
+    }
+    window.addEventListener('scroll', scrollFunc)
   }, [])
 
   const outletContext: Objectable = {
@@ -71,6 +88,9 @@ export default function App() {
 
         <Notify {...notify} onClose={onCloseNotify} />
 
+        <ScrollToTop />
+        <MoreActions />
+
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -79,12 +99,9 @@ export default function App() {
 }
 
 export function ErrorBoundary() {
-  const error: unknown = useRouteError()
-
-  console.log('error', error)
+  const error: any = useRouteError()
 
   const [root] = useMatches()
-
   console.log('root ErrorBoundary', root)
 
   let page = undefined

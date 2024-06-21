@@ -1,9 +1,12 @@
+import { Dispatch, SetStateAction } from 'react'
+import { TypeOptions } from 'react-toastify'
+
 export type Objectable = {
-  [key: string]: unknown
+  [key: string]: any
 }
 
 export type Iconable = {
-  onClick?: MouseEvent | undefined
+  onClick?: () => Promise<void>
   style?: Objectable | undefined
   fill?: string | undefined
   stroke?: string | undefined
@@ -16,27 +19,27 @@ export type ErrorBoundaryProps = {
   statusText: string | ''
 }
 
-export type NotifyType = {
+export type NotifyProps = {
   message: string | ''
-  status?: string | 'default'
-  onClose?: unknown
+  status?: TypeOptions
+  onClose?: () => void
 }
 
-export type ModalType = {
+export type ModalProps = {
   heading?: string | ''
   children?: React.ReactNode
   primaryButton?: React.ReactNode
   secondaryButton?: React.ReactNode
-  setShowModal: any
+  setShowModal: Dispatch<SetStateAction<boolean>>
   className?: string | ''
   showLine?: boolean | false
   heightChildren?: string | ''
 }
 
-export type ButtonType = {
-  icon?: any
+export type ButtonProps = {
+  icon?: React.ReactNode
   type?: 'submit' | 'reset' | 'button'
-  onClick?: any
+  onClick?: () => void
   fullWidth?: boolean
   children: React.ReactNode
   disabled?: boolean
@@ -44,11 +47,11 @@ export type ButtonType = {
   styles?: Objectable
   buttonClassName?: string
   className?: string
-  onKeyDown?: any
+  onKeyDown?: (e: Event) => void
   id?: string
 }
 
-export type DrawerType = {
+export type DrawerProps = {
   heading: string | ''
   children: React.ReactNode
 }

@@ -1,7 +1,7 @@
 import classNames from 'classnames'
-import { ButtonType } from '~/types'
+import { ButtonProps } from '~/types'
 
-function Button(props: ButtonType) {
+function Button(props: ButtonProps) {
   const {
     buttonClassName,
     className,
@@ -49,7 +49,7 @@ function Button(props: ButtonType) {
         icon ? 'gap-[10px]' : '',
         disabled || loading
           ? 'bg-gray-200 text-gray-400'
-          : 'text-white bg-[#008080] hover:bg-[#319f9f] transition-all',
+          : 'text-white bg-primary hover:bg-primary_hover transition-all',
         fullWidth ? 'w-full' : 'w-fit'
       )}
       onClick={() => onClick?.()}

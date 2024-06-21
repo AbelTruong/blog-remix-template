@@ -1,13 +1,11 @@
-import { DrawerType } from '~/types'
+import { DrawerProps } from '~/types'
 import Close from '../Icon/Close'
 
-function Drawer(props: DrawerType) {
+function Drawer(props: DrawerProps) {
   const { heading, children } = props
   const closeDrawer = () => {
     document.body.classList.remove('drawer-active')
   }
-
-  console.log('props', props)
 
   return (
     <div>

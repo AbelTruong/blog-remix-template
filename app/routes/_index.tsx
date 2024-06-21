@@ -3,7 +3,7 @@ import { useLoaderData } from '@remix-run/react'
 import transformPageTitle from '~/helper/transformPageTitle'
 import HomePage from '~/pages/Homepage'
 
-export const meta: MetaFunction = ({ data }: { data: unknown }) => {
+export const meta: MetaFunction = ({ data }: { data: any }) => {
   return [{ title: transformPageTitle(data?.page?.title) }]
 }
 
